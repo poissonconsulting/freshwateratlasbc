@@ -7,6 +7,12 @@ test_that("get functions work", {
   expect_is(x$geometry, "sfc_LINESTRING")
   expect_identical(nrow(x), 89L)
 
+  # test offset
+  x <- fwa_get_stream_network(wshed, limit = 10000, offset = 50)
+  expect_is(x, "sf")
+  expect_is(x$geometry, "sfc_LINESTRING")
+  # expect_identical(nrow(x), 79L)
+
   x <- fwa_get_lakes(wshed)
   expect_is(x, "sf")
   expect_is(x$geometry, "sfc_MULTIPOLYGON")
